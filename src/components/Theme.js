@@ -49,6 +49,13 @@ const MuiThemeOverrides = createMuiTheme({
 				maxWidth: "260px",
 				minWidth: "190px"
 			}
+		},
+		MuiTableContainer: {
+			root: {
+				// width: "50%",
+				// maxWidth: "500px",
+				minWidth: "320px"
+			}
 		}
 	},
 });

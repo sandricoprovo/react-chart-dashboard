@@ -12,11 +12,11 @@ const App = () => {
 	<ThemeProvider theme={MuiThemeOverrides}>
 		<Grid container justify="flex-start" wrap="wrap">
 		{/* Drawer */}
-			<Grid item lg={3} md={3} sm={12} xs={12}>
+			<Grid item lg={2} md={2} sm={12} xs={12}>
 				<Drawer />
 			</Grid>
 		{/* Main Content */}
-			<Grid item lg={9} md={9} sm={12} xs={12} >
+			<Grid item lg={10} md={10} sm={12} xs={12} >
 				<Box
 					display="flex"
 					flexDirection="column"
