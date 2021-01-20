@@ -6,7 +6,8 @@ const MuiThemeOverrides = createMuiTheme({
 		// Dashboard Grid
 		MuiGrid: {
 			container: {
-				height: "100%"
+				paddingTop: "8px"
+				// height: "100%"
 			}
 		},
 		// Drawer Tabs
@@ -24,10 +25,10 @@ const MuiThemeOverrides = createMuiTheme({
 		// Single Tab
 		MuiTab: {
 			root: {
-				height: "50",
-				maxWidth: "100%",
+				height: "50px",
+				// maxWidth: "100%",
 				"& > span": {
-					left: 0
+					left: 0,
 				}
 			},
 			wrapper: {
@@ -39,7 +40,14 @@ const MuiThemeOverrides = createMuiTheme({
 		// SVG Icons
 		MuiSvgIcon: {
 			root: {
-				marginRight: "16px"
+				// marginRight: "16px"
+			}
+		},
+		// Dashboard Cards
+		MuiCard: {
+			root: {
+				maxWidth: "260px",
+				minWidth: "190px"
 			}
 		}
 	},
