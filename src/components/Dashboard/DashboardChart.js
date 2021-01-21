@@ -15,6 +15,11 @@ const DashboardChart = ({ data }) => {
 		// Create a new chart and save it as the current chart reference.
 		chart.current = am4core.create("chartdiv", am4charts.XYChart);
 
+		// CONFIGURE CHART TITLE & DATA
+		// Creating chart title
+		let chartTitle = chart.current.titles.create();
+		chartTitle.text = "Revenue & Gross Margin";
+		chartTitle.align = "left";
 		// Assigning array of data objects as chart reference data
 		chart.current.data = data;
 
@@ -35,24 +40,34 @@ const DashboardChart = ({ data }) => {
 		let columnSeries = chart.current.series.push(new am4charts.ColumnSeries());
 		columnSeries.dataFields.valueY = "revenue";
 		columnSeries.dataFields.dateX = "month";
-		columnSeries.name = "Revenue Growth";
-		columnSeries.columns.template.tooltipText = "Revenue\n{dateX.formatDate('MMM yyyy')}\n[bold]{valueY.formatNumber('$#.0a')}[/]";
-		columnSeries.columns.template.fillOpacity = 0.8;
-		columnSeries.columns.template.tooltipY = 0;
+		columnSeries.name = "Revenue";
 		let columnTemplate = columnSeries.columns.template;
 		columnTemplate.strokeWidth = 2;
 		columnTemplate.strokeOpacity = 1;
 		chart.current.cursor = new am4charts.XYCursor();
+		// Tooltip Config
+		columnSeries.tooltipText = "Revenue\n{dateX.formatDate('MMM yyyy')}\n[bold]{valueY.formatNumber('$#.0a')}[/]";
+		columnSeries.columns.template.fillOpacity = 0.8;
+		columnSeries.columns.template.tooltipY = 0;
+		// columnSeries.columns.template.tooltipY.dy = -50;
 
 		// CONFIGURING CIRCLE BULLETS
 		let lineSeries = chart.current.series.push(new am4charts.LineSeries());
 		lineSeries.dataFields.valueY = "gross margin";
 		lineSeries.dataFields.dateX = "month";
-		lineSeries.name = "Comparison";
+		lineSeries.name = "Gross Margin";
 		lineSeries.strokeWidth = 3;
 		let circleBullet = lineSeries.bullets.push(new am4charts.CircleBullet());
 		circleBullet.circle.radius = 6;
+		lineSeries.tensionX = 0.77;
+		// Tooltip Config
 		lineSeries.tooltipText = "Gross Margin\n{dateX.formatDate('MMM yyyy')}\n[bold]{valueY.formatNumber('$#.0a')}[/]";
+
+		// CONFIGURE CHART LEGEND
+		chart.current.legend = new am4charts.Legend();
+		chart.current.legend.position = "top";
+		chart.current.legend.contentAlign = "right";
+		// chart.current.legend = { enabled: true, position: "right" };
 
 		// Creating Scroll Bars
 		// chart.current.scrollbarX = new am4charts.XYChartScrollbar();
