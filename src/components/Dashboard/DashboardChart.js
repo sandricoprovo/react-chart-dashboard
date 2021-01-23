@@ -1,19 +1,19 @@
-import React, { useLayoutEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 
-const DashboardChart = ({ data }) => {
+const DashboardChart = ({ data, chartID }) => {
 	// Use refs
 	const chart = useRef(null);
 
-	useLayoutEffect(() => {
+	useEffect(() => {
 		// Adding theme to am4core
 		am4core.useTheme(am4themes_animated);
 
 		// Create a new chart and save it as the current chart reference.
-		chart.current = am4core.create("chartdiv", am4charts.XYChart);
+		chart.current = am4core.create(`chartdiv_${chartID}`, am4charts.XYChart);
 
 		// CONFIGURE CHART TITLE & DATA
 		// Creating chart title
@@ -77,16 +77,17 @@ const DashboardChart = ({ data }) => {
 		return () => {
 			chart.current.dispose();
 		}
-	}, [data])
+	}, [data, chartID])
 
 	return (
-		<div id="chartdiv" style={{ width: "100%", height: "400px" }}></div>
+		<div id={`chartdiv_${chartID}`} style={{ width: "100%", height: "400px" }}></div>
 	)
 };
 
 // Props Validation
 DashboardChart.propTypes = {
-	data: PropTypes.array
+	data: PropTypes.array,
+	chartID: PropTypes.number
 }
 
 export default DashboardChart;

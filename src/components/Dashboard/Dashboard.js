@@ -1,30 +1,32 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { Grid, Box } from "@material-ui/core";
 
 // Imported Components
 import DashboardCard from "./DashboardCard";
 import DashboardChart from "./DashboardChart";
-import RevenueTable from "./RevenueTable";
+import RevenueTable from "./RevenueTable/RevenueTable";
 
 // Imported Data Files
 import JSONData from "../../data/data";
 
 const Dashboard = () => {
-	const [dataSet, setDataSet] = useState([]);
-
-	useEffect(() => {
-		// Setting data set into state
-		setDataSet(JSONData);
-	}, [])
+	const dashboardData = useRef([]);
+	dashboardData.current.fullDataSet = JSONData;
+	dashboardData.current.currentMonth = JSONData[JSONData.length - 1];
+	dashboardData.current.previousMonth = JSONData[JSONData.length - 2];
 
 	return (
 		<Grid item lg={12} md={12} sm={12} xs={12}>
 			<h1>My Dashboard</h1>
 			<Box display="flex" flexDirection="row" justifyContent="space-between" flexWrap="wrap">
+				<DashboardCard
+					title="Revenue"
+					currMonth={dashboardData.current.currentMonth}
+					prevMonth={dashboardData.current.previousMonth}
+				/>
+				{/* <DashboardCard />
 				<DashboardCard />
-				<DashboardCard />
-				<DashboardCard />
-				<DashboardCard />
+				<DashboardCard /> */}
 			</Box>
 			<Box
 				display="flex"
@@ -38,17 +40,18 @@ const Dashboard = () => {
 				<Grid item lg={6} md={6} sm={12} xs={12}>
 					<Box display="flex" flexDirection="column">
 						<div style={{ border: "2px solid black" }}>
-							{/* <h1>Graph 1</h1> */}
-							<DashboardChart data={dataSet}/>
+							{/* Chart 1 */}
+							<DashboardChart data={dashboardData.current.fullDataSet} chartID={1} />
 						</div>
 						<div style={{ border: "2px solid black" }}>
-							<h1>Graph 2</h1>
+							{/* Chart 2*/}
+							<DashboardChart data={dashboardData.current.fullDataSet} chartID={2} />
 						</div>
 					</Box>
 				</Grid>
 				{/* Revenue Details */}
 				<Grid item lg={6} md={6} sm={12} xs={12}>
-					<RevenueTable />
+					<RevenueTable data={dashboardData.current.fullDataSet} />
 				</Grid>
 			</Box>
 		</Grid>
