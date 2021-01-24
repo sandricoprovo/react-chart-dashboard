@@ -1,5 +1,6 @@
 import React from "react";
 import MuiThemeOverrides from "./Theme";
+import "../styles/main.css";
 
 // Imported Components
 import { ThemeProvider } from "@material-ui/core";

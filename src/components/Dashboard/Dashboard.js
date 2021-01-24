@@ -17,13 +17,14 @@ const Dashboard = () => {
 
 	return (
 		<Box display="flex" flexDirection="column" justifyContent="flex-start" alignItems="flex-start">
-			<Typography variant="h4">My Dashboard</Typography>
+			<Typography variant="h4" color="primary">My Dashboard</Typography>
 			<Box
 				display="flex"
 				flexDirection="row"
 				justifyContent="space-between"
 				overflow="scroll"
 				width="100%"
+				padding="20px 0"
 			>
 				<DashboardCard
 					title="Revenue"

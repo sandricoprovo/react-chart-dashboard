@@ -2,13 +2,30 @@ import { createMuiTheme } from "@material-ui/core";
 
 // Material UI Style Overrides
 const MuiThemeOverrides = createMuiTheme({
+	palette: {
+		primary: { main: "#10AC84" },
+		textPrimary: { main: "#636E72" }
+	},
 	overrides: {
-
 		// Dashboard Grid
 		MuiGrid: {
 			container: {
 				paddingTop: "8px"
 				// height: "100%"
+			}
+		},
+		MuiTypography: {
+			colorPrimary: {
+				color: "#636E72"
+			},
+			colorTextPrimary: {
+				color: "#636E72"
+			},
+			colorTextSecondary: {
+				color: "white"
+			},
+			h6: {
+				padding: "20px"
 			}
 		},
 		// Drawer Tabs

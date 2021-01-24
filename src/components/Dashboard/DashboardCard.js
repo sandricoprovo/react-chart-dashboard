@@ -23,7 +23,7 @@ const DashboardCard = ({ title, currMonth, prevMonth }) => {
 		<Card>
 			<CardContent>
 				<p>{mainTitle}</p>
-				<p>{`${mainValue}`}</p>
+				<p style={{ fontWeight: "bold", fontSize: "24px" }}>{`${mainValue}`}</p>
 				<div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
 					<p>{currentMonth}</p>
 					{
@@ -32,13 +32,13 @@ const DashboardCard = ({ title, currMonth, prevMonth }) => {
 							<Chip
 								style={{ backgroundColor: "#E66767" }}
 								label={`${monthOverMonth}%`}
-								icon={<ArrowDownwardIcon />}
+								icon={<ArrowDownwardIcon color="primary" />}
 								/>
 								) : (
 							<Chip
 								style={{ backgroundColor: "#B0B6B8" }}
 								label={`${monthOverMonth}%`}
-								icon={<ArrowUpwardIcon />}
+								icon={<ArrowUpwardIcon color="primary" />}
 							/>
 						)
 					}

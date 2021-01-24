@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import {
 	Drawer,
-	Tabs,
-	Tab,
 	List,
 	ListItem,
 	ListItemIcon,
@@ -16,7 +14,7 @@ import {
 import { Home as HomeIcon } from "@material-ui/icons";
 import { Dashboard as DashboardIcon } from "@material-ui/icons";
 import { Menu as MenuIcon } from "@material-ui/icons";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 
 // Imported Components
 import IconHeader from "./IconHeader";
@@ -66,7 +64,6 @@ const useStyles = makeStyles((theme) => ({
 const DrawerComponent = (props) => {
 	const { window } = props;
 	const classes = useStyles();
-	const theme = useTheme();
 	const [mobileOpen, setMobileOpen] = useState(false);
 
 	const handleDrawerToggle = () => {
@@ -76,7 +73,7 @@ const DrawerComponent = (props) => {
 	const drawer = (
 		<>
 			<div className={classes.toolbar} />
-			<Typography variant="h6">Overlay Analytics</Typography>
+			<Typography variant="h6" color="textSecondary">Overlay Analytics</Typography>
 			<List>
 				<ListItem button>
 					<ListItemIcon>

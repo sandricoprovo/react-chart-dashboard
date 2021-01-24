@@ -9,8 +9,9 @@ const DashboardChart = ({ data, chartID }) => {
 	const chart = useRef(null);
 
 	useEffect(() => {
-		// Adding theme to am4core
+		// Adding theme & css class usage to am4core
 		am4core.useTheme(am4themes_animated);
+		am4core.options.autoSetClassName = true;
 
 		// Create a new chart and save it as the current chart reference.
 		chart.current = am4core.create(`chartdiv_${chartID}`, am4charts.XYChart);
@@ -50,7 +51,6 @@ const DashboardChart = ({ data, chartID }) => {
 		columnSeries.tooltipText = "Revenue\n{dateX.formatDate('MMM yyyy')}\n[bold]{valueY.formatNumber('$#.0a')}[/]";
 		columnSeries.columns.template.fillOpacity = 0.9;
 		columnSeries.columns.template.tooltipY = 0;
-		// columnSeries.columns.template.tooltipY.dy = -50;
 
 		// CONFIGURING CIRCLE BULLETS
 		let lineSeries = chart.current.series.push(new am4charts.LineSeries());
