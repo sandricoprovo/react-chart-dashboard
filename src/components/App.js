@@ -1,14 +1,14 @@
 import React from "react";
-import MuiThemeOverrides from "./Theme";
-import "../styles/main.css";
+import { ThemeProvider, CssBaseline } from "@material-ui/core";
 
 // Imported Components
-import { ThemeProvider } from "@material-ui/core";
+import MuiCustomTheme from "./Theme";
 import Drawer from "./Drawer";
 
 const App = () => {
   return (
-	<ThemeProvider theme={MuiThemeOverrides}>
+	<ThemeProvider theme={MuiCustomTheme}>
+		<CssBaseline />
 		<Drawer />
 	</ThemeProvider>
   );

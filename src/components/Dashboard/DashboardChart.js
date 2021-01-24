@@ -5,7 +5,7 @@ import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 
 const DashboardChart = ({ data, chartID }) => {
-	// Use refs
+	// Use ref to hold reference to chart and its configuration
 	const chart = useRef(null);
 
 	useEffect(() => {
@@ -29,10 +29,12 @@ const DashboardChart = ({ data, chartID }) => {
 		chart.current.dataDateFormat = "MM yyyy";
 		let dateAxis = chart.current.xAxes.push(new am4charts.DateAxis());
 		dateAxis.renderer.grid.template.location = 0;
+		dateAxis.renderer.grid.template.stroke = "#F5F5F5";
 		dateAxis.dateFormats.setKey("month", "MMM yyyy")
 		// Revenue Y axis Config
 		let revenueAxis = chart.current.yAxes.push(new am4charts.ValueAxis());
 		revenueAxis.numberFormatter = new am4core.NumberFormatter();
+		revenueAxis.renderer.grid.template.stroke = "#FFFFF";
 		revenueAxis.numberFormatter.numberFormat = "$#a";
 		revenueAxis.tooltip.disabled = true;
 		revenueAxis.renderer.minWidth = 35;
@@ -51,6 +53,9 @@ const DashboardChart = ({ data, chartID }) => {
 		columnSeries.tooltipText = "Revenue\n{dateX.formatDate('MMM yyyy')}\n[bold]{valueY.formatNumber('$#.0a')}[/]";
 		columnSeries.columns.template.fillOpacity = 0.9;
 		columnSeries.columns.template.tooltipY = 0;
+		columnSeries.tooltip.autoTextColor = false;
+		columnSeries.tooltip.label.fill = am4core.color("#FFFFFF");
+		columnSeries.tooltip.label.fontSize = 16;
 
 		// CONFIGURING CIRCLE BULLETS
 		let lineSeries = chart.current.series.push(new am4charts.LineSeries());
@@ -70,21 +75,26 @@ const DashboardChart = ({ data, chartID }) => {
 		chart.current.legend = new am4charts.Legend();
 		chart.current.legend.position = "top";
 		chart.current.legend.contentAlign = "right";
-		// chart.current.legend = { enabled: true, position: "right" };
-
-		// Creating Scroll Bars
-		// chart.current.scrollbarX = new am4charts.XYChartScrollbar();
-		// chart.current.scrollbarY = new am4charts.XYChartScrollbar();
 
 		// Cleanup Function
 		return () => {
 			chart.current.dispose();
-		}
-	}, [data, chartID])
+		};
+	}, [data, chartID]);
 
 	return (
-		<div id={`chartdiv_${chartID}`} style={{ width: "100%", height: "400px" }}></div>
-	)
+		<div
+			id={`chartdiv_${chartID}`}
+			style={{
+				width: "97%",
+				height: "400px",
+				backgroundColor: "#FFFFFF",
+				margin: "0 0 16px 0",
+				borderRadius: "5px",
+				boxShadow: "0 8px 14px rgba(0, 0, 0, 0.12)"
+			}}
+		></div>
+	);
 };
 
 // Props Validation

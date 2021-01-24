@@ -52,20 +52,18 @@ const Dashboard = () => {
 				flexDirection="row"
 				flexWrap="wrap"
 				justifyContent="space-between"
+				alignItems="flex-start"
 				padding="20px 0"
 				width="100%"
+				height="100%"
 			>
 				{/* Charts */}
 				<Grid item lg={6} md={6} sm={12} xs={12}>
 					<Box display="flex" flexDirection="column">
-						<div padding="20px">
-							{/* Chart 1 */}
-							<DashboardChart data={dashboardData.current.fullDataSet} chartID={1} />
-						</div>
-						<div padding="20px">
-							{/* Chart 2*/}
-							<DashboardChart data={dashboardData.current.fullDataSet} chartID={2} />
-						</div>
+						{/* Chart 1 */}
+						<DashboardChart data={dashboardData.current.fullDataSet} chartID={1} />
+						{/* Chart 2*/}
+						<DashboardChart data={dashboardData.current.fullDataSet} chartID={2} />
 					</Box>
 				</Grid>
 				{/* Revenue Details */}

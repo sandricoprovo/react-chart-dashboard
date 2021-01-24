@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import {
 	Drawer,
-	List,
-	ListItem,
-	ListItemIcon,
-	ListItemText,
 	Hidden,
 	AppBar,
 	Toolbar,
 	IconButton,
-	Typography
+	Typography,
+	Tab,
+	Tabs
 } from "@material-ui/core";
 import { Home as HomeIcon } from "@material-ui/icons";
 import { Dashboard as DashboardIcon } from "@material-ui/icons";
@@ -20,7 +18,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import IconHeader from "./IconHeader";
 import Dashboard from "./Dashboard/Dashboard";
 
-const drawerWidth = 280;
+const drawerWidth = 260;
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -48,15 +46,17 @@ const useStyles = makeStyles((theme) => ({
 	// necessary for content to be below app bar
 	toolbar: theme.mixins.toolbar,
 	drawerPaper: {
-		width: drawerWidth - 10,
-		height: "100vh",
+		width: drawerWidth,
+		minHeight: "100vh",
 		backgroundColor: "#10AC84",
 		border: "none"
 	},
 	content: {
 		width: "100vw",
-		padding: "0px 16px",
+		padding: "0px 2%",
 		backgroundColor: "#F3F3F3",
+		overflowY: "scroll",
+		maxHeight: "100vh"
 	},
 }));
 
@@ -72,22 +72,15 @@ const DrawerComponent = (props) => {
 
 	const drawer = (
 		<>
-			<div className={classes.toolbar} />
 			<Typography variant="h6" color="textSecondary">Overlay Analytics</Typography>
-			<List>
-				<ListItem button>
-					<ListItemIcon>
-						<HomeIcon />
-					</ListItemIcon>
-					<ListItemText primary="Home" />
-				</ListItem>
-				<ListItem button selected={true}>
-					<ListItemIcon>
-						<DashboardIcon />
-					</ListItemIcon>
-					<ListItemText primary="My Dashboard" />
-				</ListItem>
-			</List>
+			<Tabs
+				orientation="vertical"
+				value={1}
+				classes={{ indicator: classes.indicator }}
+			>
+				<Tab label="Home" icon={<HomeIcon />} wrapped={true} />
+				<Tab label="My Dashboard" icon={<DashboardIcon />} wrapped={true} />
+			</Tabs>
 		</>
 	);
 

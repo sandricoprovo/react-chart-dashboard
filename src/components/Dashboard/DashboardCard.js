@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardContent, Chip } from "@material-ui/core";
+import { Card, CardContent, Chip, Typography } from "@material-ui/core";
 import {
 	ArrowUpward as ArrowUpwardIcon,
 	ArrowDownward as ArrowDownwardIcon
@@ -22,10 +22,18 @@ const DashboardCard = ({ title, currMonth, prevMonth }) => {
 	return (
 		<Card>
 			<CardContent>
-				<p>{mainTitle}</p>
-				<p style={{ fontWeight: "bold", fontSize: "24px" }}>{`${mainValue}`}</p>
-				<div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-					<p>{currentMonth}</p>
+				<Typography>{mainTitle}</Typography>
+				<Typography style={{ fontWeight: "bold", fontSize: "34px", margin: "0px" }}>
+					{`${mainValue}`}
+				</Typography>
+				<div
+					style={{
+						display: "flex",
+						justifyContent: "space-between",
+						alignItems: "center"
+					}}
+				>
+					<Typography>{currentMonth}</Typography>
 					{
 						isChangeNegative
 						? (
