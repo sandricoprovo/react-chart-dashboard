@@ -3,6 +3,7 @@ import { createMuiTheme } from "@material-ui/core";
 // Material UI Style Overrides
 const MuiThemeOverrides = createMuiTheme({
 	overrides: {
+
 		// Dashboard Grid
 		MuiGrid: {
 			container: {
@@ -14,6 +15,11 @@ const MuiThemeOverrides = createMuiTheme({
 		MuiDrawer: {
 			paper: {
 				position: "static",
+			}
+		},
+		MuiToolbar: {
+			root: {
+				justifyContent: "space-between",
 			}
 		},
 		MuiTabs: {

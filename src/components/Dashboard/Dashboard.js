@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { Grid, Box } from "@material-ui/core";
+import { Grid, Box, Typography } from "@material-ui/core";
 
 // Imported Components
 import DashboardCard from "./DashboardCard";
@@ -16,9 +16,15 @@ const Dashboard = () => {
 	dashboardData.current.previousMonth = JSONData[JSONData.length - 2];
 
 	return (
-		<Grid item lg={12} md={12} sm={12} xs={12}>
-			<h1>My Dashboard</h1>
-			<Box display="flex" flexDirection="row" justifyContent="space-between" flexWrap="wrap">
+		<Box display="flex" flexDirection="column" justifyContent="flex-start" alignItems="flex-start">
+			<Typography variant="h4">My Dashboard</Typography>
+			<Box
+				display="flex"
+				flexDirection="row"
+				justifyContent="space-between"
+				overflow="scroll"
+				width="100%"
+			>
 				<DashboardCard
 					title="Revenue"
 					currMonth={dashboardData.current.currentMonth}
@@ -51,11 +57,11 @@ const Dashboard = () => {
 				{/* Charts */}
 				<Grid item lg={6} md={6} sm={12} xs={12}>
 					<Box display="flex" flexDirection="column">
-						<div style={{ border: "2px solid black" }}>
+						<div padding="20px">
 							{/* Chart 1 */}
 							<DashboardChart data={dashboardData.current.fullDataSet} chartID={1} />
 						</div>
-						<div style={{ border: "2px solid black" }}>
+						<div padding="20px">
 							{/* Chart 2*/}
 							<DashboardChart data={dashboardData.current.fullDataSet} chartID={2} />
 						</div>
@@ -66,7 +72,7 @@ const Dashboard = () => {
 					<RevenueTable data={dashboardData.current.fullDataSet} />
 				</Grid>
 			</Box>
-		</Grid>
+		</Box>
 	)
 }
 

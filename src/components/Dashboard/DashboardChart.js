@@ -41,13 +41,14 @@ const DashboardChart = ({ data, chartID }) => {
 		columnSeries.dataFields.valueY = "revenue";
 		columnSeries.dataFields.dateX = "month";
 		columnSeries.name = "Revenue";
+		columnSeries.fill = "#B0B6B8";
 		let columnTemplate = columnSeries.columns.template;
-		columnTemplate.strokeWidth = 2;
+		columnTemplate.strokeWidth = 0;
 		columnTemplate.strokeOpacity = 1;
 		chart.current.cursor = new am4charts.XYCursor();
 		// Tooltip Config
 		columnSeries.tooltipText = "Revenue\n{dateX.formatDate('MMM yyyy')}\n[bold]{valueY.formatNumber('$#.0a')}[/]";
-		columnSeries.columns.template.fillOpacity = 0.8;
+		columnSeries.columns.template.fillOpacity = 0.9;
 		columnSeries.columns.template.tooltipY = 0;
 		// columnSeries.columns.template.tooltipY.dy = -50;
 
@@ -57,6 +58,8 @@ const DashboardChart = ({ data, chartID }) => {
 		lineSeries.dataFields.dateX = "month";
 		lineSeries.name = "Gross Margin";
 		lineSeries.strokeWidth = 3;
+		lineSeries.fill = am4core.color("#10AC84");
+		lineSeries.stroke = am4core.color("#10AC84");
 		let circleBullet = lineSeries.bullets.push(new am4charts.CircleBullet());
 		circleBullet.circle.radius = 6;
 		lineSeries.tensionX = 0.77;

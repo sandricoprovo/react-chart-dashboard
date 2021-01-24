@@ -11,7 +11,7 @@ import {
 
 const IconHeader = () => {
 	return (
-		<Box display="flex" flexDirection="row-reverse" height="10%">
+		<Box display="flex" flexDirection="row" height="100%" marginLeft="auto">
 			<IconButton aria-label="search" component="span">
 				<SearchIcon />
 			</IconButton>
