@@ -8,7 +8,7 @@ import { Dashboard as DashboardIcon } from "@material-ui/icons";
 // Exported Component
 const DrawerComponent = () => {
 	return (
-		<Drawer anchor="left" variant="persistent" open={true}>
+		<Drawer anchor="left" variant="temporary" open={true}>
 			<h1>Overlay Analytics</h1>
 			<Tabs
 				orientation="vertical"

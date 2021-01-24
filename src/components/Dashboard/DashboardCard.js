@@ -1,21 +1,48 @@
-import React, { useRef } from "react";
-import { Card, CardContent } from "@material-ui/core";
+import React from "react";
+import { Card, CardContent, Chip } from "@material-ui/core";
+import {
+	ArrowUpward as ArrowUpwardIcon,
+	ArrowDownward as ArrowDownwardIcon
+} from "@material-ui/icons";
 import PropTypes from "prop-types";
 
 // Imported Functions
 import formatDashboardCardData from "../../utils/formatDashboardCardData";
 
 const DashboardCard = ({ title, currMonth, prevMonth }) => {
-	const cardDetails = useRef();
-
 	// Get card details from formatting function
-	const formattedData = formatDashboardCardData(title, currMonth, prevMonth);
-	console.log(formattedData)
+	const {
+		mainTitle,
+		mainValue,
+		currentMonth,
+		isChangeNegative,
+		monthOverMonth,
+	} = formatDashboardCardData(title, currMonth, prevMonth);
 
 	return (
 		<Card>
 			<CardContent>
-				<h1>Hello Card</h1>
+				<p>{mainTitle}</p>
+				<p>{`${mainValue}`}</p>
+				<div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+					<p>{currentMonth}</p>
+					{
+						isChangeNegative
+						? (
+							<Chip
+								style={{ backgroundColor: "#E66767" }}
+								label={`${monthOverMonth}%`}
+								icon={<ArrowDownwardIcon />}
+								/>
+								) : (
+							<Chip
+								style={{ backgroundColor: "#B0B6B8" }}
+								label={`${monthOverMonth}%`}
+								icon={<ArrowUpwardIcon />}
+							/>
+						)
+					}
+				</div>
 			</CardContent>
 		</Card>
 	);
@@ -28,4 +55,4 @@ DashboardCard.propTypes = {
 	prevMonth: PropTypes.object,
 }
 
-export default DashboardCard
+export default DashboardCard;

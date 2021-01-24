@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 import { Grid, Box } from "@material-ui/core";
 
 // Imported Components
@@ -24,9 +24,21 @@ const Dashboard = () => {
 					currMonth={dashboardData.current.currentMonth}
 					prevMonth={dashboardData.current.previousMonth}
 				/>
-				{/* <DashboardCard />
-				<DashboardCard />
-				<DashboardCard /> */}
+				<DashboardCard
+					title="Cost Of Goods"
+					currMonth={dashboardData.current.currentMonth}
+					prevMonth={dashboardData.current.previousMonth}
+				/>
+				<DashboardCard
+					title="Gross Margin"
+					currMonth={dashboardData.current.currentMonth}
+					prevMonth={dashboardData.current.previousMonth}
+				/>
+				<DashboardCard
+					title="Gross Margin %"
+					currMonth={dashboardData.current.currentMonth}
+					prevMonth={dashboardData.current.previousMonth}
+				/>
 			</Box>
 			<Box
 				display="flex"
