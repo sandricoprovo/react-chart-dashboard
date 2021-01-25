@@ -1,3 +1,6 @@
+// Imported util functions
+import formatCurrency from "./formatCurrency";
+
 const formatDashboardCardData = (cardTitle, currMonthStats, prevMonthStats) => {
 	// Object to hold values for reference
 	const detailsObj = {};
@@ -6,15 +9,8 @@ const formatDashboardCardData = (cardTitle, currMonthStats, prevMonthStats) => {
 	const dateOptions = {
 		month: "short",
 		year: "numeric"
-	}
+	};
 	const formattedMonth = new Intl.DateTimeFormat("en-US", dateOptions).format(currMonthStats.month);
-
-	// Currency formatting options
-	const currencyOptions = {
-		style: "currency",
-		currency: "USD",
-		currencyDisplay: "narrowSymbol"
-	}
 
 	// Setting the non-calculated values
 	detailsObj.title = cardTitle;
@@ -23,19 +19,22 @@ const formatDashboardCardData = (cardTitle, currMonthStats, prevMonthStats) => {
 	// Set the reference objects values based on which card is being shown
 	if (cardTitle === "Revenue") {
 		// Main value
-		detailsObj.mainValue = new Intl.NumberFormat("en-Us", currencyOptions).format(currMonthStats.revenue);
+		detailsObj.mainValue = formatCurrency(currMonthStats.revenue);
+
 		// Current & Previous month values
 		detailsObj.currMonthVal = currMonthStats.revenue;
 		detailsObj.prevMonthVal = prevMonthStats.revenue;
 	} else if (cardTitle === "Cost Of Goods") {
 		// Main value
-		detailsObj.mainValue = new Intl.NumberFormat("en-Us", currencyOptions).format(currMonthStats.revenue - currMonthStats["gross margin"]);
+		detailsObj.mainValue = formatCurrency(currMonthStats.revenue - currMonthStats["gross margin"]);
+
 		// Current & Previous month values
 		detailsObj.currMonthVal = currMonthStats.revenue - currMonthStats["gross margin"];
 		detailsObj.prevMonthVal = prevMonthStats.revenue - prevMonthStats["gross margin"];
 	} else if (cardTitle === "Gross Margin") {
 		// Main value
-		detailsObj.mainValue = new Intl.NumberFormat("en-Us", currencyOptions).format(currMonthStats["gross margin"]);
+		detailsObj.mainValue = formatCurrency(currMonthStats["gross margin"]);
+
 		// Current & Previous month values
 		detailsObj.currMonthVal = currMonthStats["gross margin"];
 		detailsObj.prevMonthVal = prevMonthStats["gross margin"];

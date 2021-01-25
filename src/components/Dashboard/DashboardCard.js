@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardContent, Chip, Typography } from "@material-ui/core";
+import { Card, CardContent, Chip, Typography, Box } from "@material-ui/core";
 import {
 	ArrowUpward as ArrowUpwardIcon,
 	ArrowDownward as ArrowDownwardIcon
@@ -23,34 +23,52 @@ const DashboardCard = ({ title, currMonth, prevMonth }) => {
 		<Card>
 			<CardContent>
 				<Typography>{mainTitle}</Typography>
-				<Typography style={{ fontWeight: "bold", fontSize: "34px", margin: "0px" }}>
-					{`${mainValue}`}
-				</Typography>
-				<div
+				<Typography
 					style={{
-						display: "flex",
-						justifyContent: "space-between",
-						alignItems: "center"
+						fontWeight: "bold",
+						fontSize: "34px",
+						margin: "0px"
 					}}
 				>
-					<Typography>{currentMonth}</Typography>
-					{
-						isChangeNegative
-						? (
-							<Chip
-								style={{ backgroundColor: "#E66767" }}
-								label={`${monthOverMonth}%`}
-								icon={<ArrowDownwardIcon color="primary" />}
+					{`${mainValue}`}
+				</Typography>
+				<Box
+					display="flex"
+					justifyContent="space-between"
+					alignItems="center"
+				>
+					<Typography
+						style={{
+							fontSize: "14px",
+						}}
+					>
+						{currentMonth}
+					</Typography>
+					<Box
+						display="flex"
+						flexDirection="column"
+						justifyContent="space-between"
+						alignItems="center"
+					>
+						{
+							isChangeNegative
+							? (
+								<Chip
+									style={{ backgroundColor: "#E66767" }}
+									label={`${monthOverMonth}%`}
+									icon={<ArrowDownwardIcon color="primary" />}
 								/>
-								) : (
-							<Chip
-								style={{ backgroundColor: "#B0B6B8" }}
-								label={`${monthOverMonth}%`}
-								icon={<ArrowUpwardIcon color="primary" />}
-							/>
-						)
-					}
-				</div>
+									) : (
+								<Chip
+									style={{ backgroundColor: "#B0B6B8" }}
+									label={`${monthOverMonth}%`}
+									icon={<ArrowUpwardIcon color="primary" />}
+								/>
+							)
+						}
+						<Typography style={{ fontSize: "12px", }}>MoM</Typography>
+					</Box>
+				</Box>
 			</CardContent>
 		</Card>
 	);

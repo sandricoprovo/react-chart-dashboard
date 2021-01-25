@@ -89,14 +89,14 @@ const MuiCustomTheme = createMuiTheme({
 		},
 		MuiCardContent: {
 			root: {
-				width: "280px",
+				minWidth: "250px",
 				padding: "16px 20px",
 			}
 		},
 		MuiChip: {
 			root: {
 				color: "#FFFFFF",
-				padding: "0px 16px",
+				padding: "0px 8px",
 				fontSize: "18px"
 			},
 			icon: {

@@ -45,35 +45,3 @@ TableHeader.propTypes = {
 };
 
 export default TableHeader;
-
-// OLD CODE
-			// {/* <TableCell>
-			// 		<TableSortLabel>
-			// 			Invoice #
-			// 		</TableSortLabel>
-			// 	</TableCell>
-			// 	<TableCell>
-			// 		<TableSortLabel>
-			// 			Customer #
-			// 		</TableSortLabel>
-			// 	</TableCell>
-			// 	<TableCell>
-			// 		<TableSortLabel>
-			// 			Invoice Date
-			// 		</TableSortLabel>
-			// 	</TableCell>
-			// 	<TableCell>
-			// 		<TableSortLabel>
-			// 			Revenue
-			// 		</TableSortLabel>
-			// 	</TableCell>
-			// 	<TableCell>
-			// 		<TableSortLabel>
-			// 			Cost of Goods
-			// 		</TableSortLabel>
-			// 	</TableCell>
-			// 	<TableCell>
-			// 		<TableSortLabel>
-			// 			Gross Margin
-			// 		</TableSortLabel>
-			// 	</TableCell> */}

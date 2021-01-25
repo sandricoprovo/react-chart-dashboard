@@ -8,6 +8,9 @@ const DashboardChart = ({ data, chartID }) => {
 	// Use ref to hold reference to chart and its configuration
 	const chart = useRef(null);
 
+	// Function to receive column chart border radius
+	const getColumnBorderRadius = () => 5;
+
 	useEffect(() => {
 		// Adding theme & css class usage to am4core
 		am4core.useTheme(am4themes_animated);
@@ -49,13 +52,16 @@ const DashboardChart = ({ data, chartID }) => {
 		columnTemplate.strokeWidth = 0;
 		columnTemplate.strokeOpacity = 1;
 		chart.current.cursor = new am4charts.XYCursor();
+		columnSeries.stacked = true;
+		columnSeries.columns.template.column.adapter.add("cornerRadiusTopLeft", getColumnBorderRadius);
+		columnSeries.columns.template.column.adapter.add("cornerRadiusTopRight", getColumnBorderRadius);
 		// Tooltip Config
 		columnSeries.tooltipText = "Revenue\n{dateX.formatDate('MMM yyyy')}\n[bold]{valueY.formatNumber('$#.0a')}[/]";
 		columnSeries.columns.template.fillOpacity = 0.9;
 		columnSeries.columns.template.tooltipY = 0;
 		columnSeries.tooltip.autoTextColor = false;
 		columnSeries.tooltip.label.fill = am4core.color("#FFFFFF");
-		columnSeries.tooltip.label.fontSize = 16;
+		columnSeries.tooltip.label.fontSize = 12;
 
 		// CONFIGURING CIRCLE BULLETS
 		let lineSeries = chart.current.series.push(new am4charts.LineSeries());

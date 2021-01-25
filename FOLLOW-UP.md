@@ -1,5 +1,5 @@
 1. How long did you spend on the evaluation?
-	-
+	- Overall I spent roughly 18 hours on this evaluation.
 2. If you had more time, what further improvements or new features would you have added?
    - If I had more time to work on this project, I my first thought out be to add a home page. On the home page, a feature that I think would provide an extra level of usability would be the the ability to filter the invoices by month to provide totals. For example, when a user signs on, they would see this this months invoice totals.
 3. Which parts are you most proud of? And why?

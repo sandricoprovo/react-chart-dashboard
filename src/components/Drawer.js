@@ -66,10 +66,12 @@ const DrawerComponent = (props) => {
 	const classes = useStyles();
 	const [mobileOpen, setMobileOpen] = useState(false);
 
+	// Handler for opening and closing drawer
 	const handleDrawerToggle = () => {
 		setMobileOpen(!mobileOpen);
 	};
 
+	// Drawer JSX
 	const drawer = (
 		<>
 			<Typography variant="h6" color="textSecondary">Overlay Analytics</Typography>

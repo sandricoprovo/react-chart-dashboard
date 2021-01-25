@@ -10,6 +10,7 @@ import RevenueTable from "./RevenueTable/RevenueTable";
 import JSONData from "../../data/data";
 
 const Dashboard = () => {
+	// useRef reference for holding dashboard data
 	const dashboardData = useRef([]);
 	dashboardData.current.fullDataSet = JSONData;
 	dashboardData.current.currentMonth = JSONData[JSONData.length - 1];
@@ -53,7 +54,6 @@ const Dashboard = () => {
 				flexWrap="wrap"
 				justifyContent="space-between"
 				alignItems="flex-start"
-				padding="20px 0"
 				width="100%"
 				height="100%"
 			>
